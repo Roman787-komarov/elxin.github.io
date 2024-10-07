@@ -1,6 +1,21 @@
-<section>
-  <h2>Комаров Роман Александрович</h2>
-  <p>
-    Привет, я учусь в НРТК.
-  </p>
-</section>
+#include <iostream>
+#include <fstream>
+
+int main() {
+    const int numFiles = 10;
+
+    for (int i = 1; i <= numFiles; ++i) {
+        std::string fileName = "file" + std::to_string(i) + ".txt";
+        std::ofstream outFile(fileName);
+
+        if (outFile.is_open()) {
+            outFile << "This is file number " << i << std::endl;
+            outFile.close();
+            std::cout << "Created: " << fileName << std::endl;
+        } else {
+            std::cerr << "Error creating file: " << fileName << std::endl;
+        }
+    }
+
+    return 0;
+}
