@@ -1,21 +1,14 @@
-#include <iostream>
-#include <fstream>
-
-int main() {
-    const int numFiles = 10;
-
-    for (int i = 1; i <= numFiles; ++i) {
-        std::string fileName = "file" + std::to_string(i) + ".txt";
-        std::ofstream outFile(fileName);
-
-        if (outFile.is_open()) {
-            outFile << "This is file number " << i << std::endl;
-            outFile.close();
-            std::cout << "Created: " << fileName << std::endl;
-        } else {
-            std::cerr << "Error creating file: " << fileName << std::endl;
-        }
-    }
-
-    return 0;
-}
+user@iMac-rmp-136 ~ % for i in {1..10}
+for> do
+for> echo "This is file number $i" > "file$i.txt"
+for> done
+user@iMac-rmp-136 ~ % SOURCE_DIR="первый_каталог"
+user@iMac-rmp-136 ~ % DEST_DIR="второй_каталог"  
+user@iMac-rmp-136 ~ % mkdir -p "$DEST_DIR"
+user@iMac-rmp-136 ~ % cp "$SOURCE_DIR"/* "$DEST_DIR"
+zsh: no matches found: первый_каталог/*
+user@iMac-rmp-136 ~ % rm -r "$SOURCE_DIR"
+rm: первый_каталог: No such file or directory
+user@iMac-rmp-136 ~ % echo "Файлы из $SOURCE_DIR были скопированы в $DEST_DIR, а$SOURCE_DIR был удален"
+Файлы из первый_каталог были скопированы в второй_каталог, апервый_каталог был удален
+user@iMac-rmp-136 ~ % 
